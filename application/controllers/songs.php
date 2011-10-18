@@ -211,12 +211,12 @@ class songs extends Zcontroller {
             		$this->form_validation->set_rules('image1', 'Picture Album', "callback_ext_check1");	
 		     		$this->form_validation->set_rules('image2', 'Song', 'callback_ext_check2');
 		     		
-					$file_size_mp3;
-					$filename_big_file;
-					$filename_big_img;
-					$lenght;
-					$bitrate;
-					$file_path;
+					$file_size_mp3=null;
+					$filename_big_file=null;
+					$filename_big_img=null;
+					$lenght=null;
+					$bitrate=null;
+					$file_path=null;
 					
 					if ($this->form_validation->run() == FALSE)
 					{			
@@ -322,6 +322,10 @@ class songs extends Zcontroller {
 					        	//echo $filename_big_arr["image".$i]."<br/>";
 					        	
 					    	 } // FOR LOOP
+					    	 
+					    	 $filename_big_img = $filename_big_img!="" ? $filename_big_img : $_POST["txtAlbumpic"];
+					    	 $filename_big_file = $filename_big_file!="" ? $filename_big_file : $_POST["txtFile"];
+					    	 
                					$song_id = $this->m_songs->update_songs($song_id,
                											 $_POST["txtTitle"],	
 													     $_POST["cboArtist"],													     
@@ -334,11 +338,12 @@ class songs extends Zcontroller {
 														 $lenght,
 														 $bitrate,														 
 														 $_POST["cboLang"],
-														 $_POST["cboPro"]);	
+														 $_POST["cboPro"]);
+					    	
 													
 						echo "<div style=\"border:#CDCDCD 6px solid;font-family:'Segoe UI Light', 'Segoe UI'; width:328px; padding-top:48px; margin:0 auto; padding-left:50px; height:136px;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;\"><h2>Song have been inserted sucessfully.</h2></div>";
-				 		$auto="<script type=\"text/javascript\">setInterval( \"autosubmit()\", 1600 );function autosubmit(){ document.location=\"".site_url('songs/addsongs')."\";}</script>";
-				 		//echo $auto; 
+				 		$auto="<script type=\"text/javascript\">setInterval( \"autosubmit()\", 1600 );function autosubmit(){ document.location=\"".$_SERVER['HTTP_REFERER']."\";}</script>";
+				 		echo $auto; 
 					}				
             					
             	}else {
