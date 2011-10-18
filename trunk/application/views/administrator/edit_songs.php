@@ -74,13 +74,13 @@
               </tr>
               <tr>
                 <td align="right">Album picture:</td>
-                <td><input type="file" name="image1" id="image1">&nbsp;<?=$song_id["album_pic"];?></td>
+                <td><input type="file" name="image1" id="image1">&nbsp; <input name="txtAlbumpic" type="text" class="textbox" id="txtAlbumpic" value="<?=$song_id["album_pic"];?>" style="border:0; height:22px;" /></td>
                 <td>&nbsp;</td>
 
               </tr> 
               <tr>
                 <td align="right">Upload song:</td>
-                <td><input type="file" name="image2" id="image2">&nbsp;<?=$song_id["file_name"];?></td>
+                <td><input type="file" name="image2" id="image2">&nbsp;<input name="txtFile" type="text" class="textbox" id="txtFile" value="<?=$song_id["file_name"];?>" style="border:0; height:22px;" /></td>
                 <td>&nbsp;</td>
               </tr>             
               <tr>
