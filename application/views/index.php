@@ -1,8 +1,7 @@
-
-   <table width="100%" border="0">
+﻿<table width="100%" border="0">
     <tr>
       <td colspan="2" height="50">  
-         <div class="menu" style="border:#D1D1D1 1px solid;background:#F8F8F8;border-radius: 3px; -moz-border-radius: 3px;-webkit-border-radius: 3px;">
+         <div class="menu" style="border:#D1D1D1 1px solid;background:#F8F8F8;border-radius: 3px; -moz-border-radius: 3px;-webkit-border-radius: 3px;font-family: 'Hanuman', 'Khmer OS System', 'Khmer OS', 'Tahoma', 'sans-serif';">
           <ul>
             <li id="projects" class="notification-menu-item "><a href="index.html#">ទំព័រដែម</a></li>
             <li id="tasks" class="notification-menu-item "><a href="index.html#">ស្តាប់ចំរៀង</a>
@@ -19,54 +18,72 @@
       </td>
     </tr>	
     <tr>
-      <td width="39%" valign="top" style="background:url(<?=base_url();?>images/bg_b.jpg);">
+      <td width="36%" valign="top" style="background:url(<?=base_url();?>images/bg_b.jpg);">
       <div class="music-player">
           <div class="album-cover">
             <span class="img" style="opacity: 1; ">
-                <img src="<?=base_url();?>song/other/1.jpg" height="125" width="125" alt="album cover">
+                <img src="<?=base_url();?>song/Audio-Vol12-F.jpg" height="125" width="125" alt="album cover">
              </span>            
             <span class="highlight"></span>        
           </div>
-          <div style="font-size:12px; padding-left:30px; text-align:left; float:left; width:175px;">
-            <div style="color:#fff">Love The Way You Lie</div>
-            <div style="color:#666"><i>By</i> Eminem</div>
+          <div style="font-size:12px; padding-left:18px; text-align:left; float:left; width:135px;">
+            <div style="color:#fff">ភាសាខែ្មរ</div>
+            <div style="color:#666; margin:5px 0;"><i>By</i> អ្នកចំរៀងចំរុះ</div>
             <div><img src="<?=base_url();?>images/rating-on.png" width="15" height="16"><img src="<?=base_url();?>images/rating-on.png" width="15" height="16"><img src="<?=base_url();?>images/rating-on.png" width="15" height="16"><img src="<?=base_url();?>images/rating-on.png" width="15" height="16"><img src="<?=base_url();?>images/rating-off.png" width="15" height="16"></div>
             <div style="color:#fff">( 46 ratings )</div>
-          </div>
+          </div>            
+          <ul>
+            <?php foreach($song_cat->result_array() as $rowCat){?>
+            <li><a href="<?=site_url("#")?>"><?=$rowCat["song_cat_name"];?></a></li>
+            <?php }?>
+            </ul>
        </div>
       </td>
       
-      <td width="61%" class="right_content" style="padding-right:5px;">
-      
-          <div class="media-player">
-          <span class="media-label">audioplayer <span class="media-name"></span></span>
-          <div class="player-errors ui-state-error">
-              Turn on your JavaScript
+      <td width="64%" class="right_content" style="padding-right:5px;">    
+          <div id="player">
+            <?php
+			//setting the variables
+			$ipod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+			$iphone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+			$ipad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+			$safari = stripos($_SERVER['HTTP_USER_AGENT'],"Safari");
+			$chrome = stripos($_SERVER['HTTP_USER_AGENT'],"chrome");
+			
+			//detecting device
+			if ($ipod == true || $iphone == true || $ipad == true){?>
+             	<style type="text/css">audio {width:350px;}</style>
+          		<div onclick="nextSong()" style="height:30px; width:35px; float:right; cursor:pointer;"><img src="<?=base_url();?>images/next.png" height="28" /></div>
+			<? }else if($chrome==true) {?>
+            	<style type="text/css">audio {width:518px;}</style>
+				<div onclick="nextSong()" style="height:30px; width:35px; float:right; cursor:pointer;"><img src="<?=base_url();?>images/next.png" width="35" height="32" /></div>
+			<? }else {?> 
+            	<style type="text/css">audio {width:518px;}</style>
+            	<div onclick="nextSong()" style="height:30px; width:35px; float:right; cursor:pointer;"><img src="<?=base_url();?>images/next.png" height="25" /></div>
+            <? }?>	
           </div>
-          <audio autoplay="autoplay"></audio>
-          
-          <div class="media-controls">
-              <a class="play-pause"><span class="ui-icon"> </span><span class="button-text">play / pause</span></a>
-              <span class="current-time player-display">00:00</span>
-              <div class="timeline-slider">
-                  <span class="handle-label">play position</span>
-                  <div class="progressbar"></div>
-              </div>
-              <span class="duration player-display">00:00</span>
-              <a class="mute-unmute"><span class="ui-icon"> </span><span class="button-text">mute / unmute</span></a>
-              <div class="volume-slider"><span class="handle-label">volume control</span></div>
-          </div>
-          
-          <div class="playlist loop autoplay-next">
-              <div style="width:99%;height:480px;overflow:auto;">
+		  
+
+          <div id="playlist">
+
+              <script type="text/javascript">
+			  var urls = new Array();				  
+              <?php $key=0;
+              foreach($songs->result_array() as $key => $rowSongs){?>
+                 urls[<?=$key;?>] = '<?=base_url();?><?=$rowSongs["file_path"].$rowSongs["file_name"];?>';
+              <? }?>
+			  var next = 0;
+              </script>
               <ul>
-                <?php foreach($songs->result_array() as $rowSongs){?>
-                  <li data-srces="<?=base_url();?><?=$rowSongs["file_path"].$rowSongs["file_name"];?>,<?=base_url();?>song/chefsachesketch.ogg"><?=$rowSongs["song_title"];?></li>
-                <?php }?>
-              </ul>
-              </div>
+              <?php $key=0;
+			  $i=1;
+              foreach($songs->result_array() as $key => $rowSongs){?>
+                <li onclick="pickSong(<?=$key;?>)" id="listsong"><?=$i++;?>. <?=$rowSongs["song_title"];?></li>
+              <? }?> 
+              </ul> 
+              
           </div>
-      </div>
       </td>
     </tr>
   </table>
+<style type="text/css">@font-face{font-family:"Hanuman";font-style:normal;font-weight:bold;src:url("http://themes.googleusercontent.com/font?kit=Ew45bUiEOJLRErShx3hFGA") format("truetype"), url('http://themes.googleusercontent.com/font?kit=aHXJoDrzg2IPQxS0h3D3gA') format('woff');}@font-face{font-family:"Hanuman";font-style:normal;font-weight:normal;src:url("http://themes.googleusercontent.com/font?kit=Ew45bUiEOJLRErShx3hFGA") format("truetype"), url('http://themes.googleusercontent.com/font?kit=aHXJoDrzg2IPQxS0h3D3gA') format('woff');}</style>

@@ -22,7 +22,7 @@ class m_songs extends Zmodel{
 					  date_post,
 					  hit_id
     	FROM songs 
-    	ORDER BY date_post asc";
+    	ORDER BY song_id asc";
     	return $this->db->query($sql);
     }
     
