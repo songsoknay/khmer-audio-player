@@ -3,7 +3,7 @@
     <div id="wrap">
     
     <div id="tdd_selected">
-    	<div class="dd_selected">All songs</div>
+    	<div class="dd_selected"><a href="<?=site_url("misc/homepage");?>">Home</a> &nbsp;All songs</div>
         <div class="dd_view" style="overflow:auto">
         <form action="<?=site_url("songs/addsongs");?>" method="post" enctype="multipart/form-data">
             <table width="99%" border="0" class="userview" align="center">

@@ -177,7 +177,7 @@ class songs extends Zcontroller {
 													
 						echo "<div style=\"border:#CDCDCD 6px solid;font-family:'Segoe UI Light', 'Segoe UI'; width:328px; padding-top:48px; margin:0 auto; padding-left:50px; height:136px;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;\"><h2>Song have been inserted sucessfully.</h2></div>";
 				 		$auto="<script type=\"text/javascript\">setInterval( \"autosubmit()\", 1600 );function autosubmit(){ document.location=\"".site_url('songs/addsongs')."\";}</script>";
-				 		//echo $auto; 
+				 		echo $auto; 
 					}				
             					
             	}else {
@@ -207,16 +207,17 @@ class songs extends Zcontroller {
             		$this->form_validation->set_rules('cboArtist', 'Artist song', '');
             		$this->form_validation->set_rules('cboLang', 'Language song', 'required');
             		$this->form_validation->set_rules('cboPro', 'Production', '');
-            		$this->form_validation->set_rules('txtLenght', 'Lenght', '');
+            		$this->form_validation->set_rules('txtbitrate', 'bitrate', '');
+            		$this->form_validation->set_rules('txtlenght', 'Lenght', '');
             		$this->form_validation->set_rules('image1', 'Picture Album', "callback_ext_check1");	
 		     		$this->form_validation->set_rules('image2', 'Song', 'callback_ext_check2');
 		     		
 					$file_size_mp3=null;
 					$filename_big_file=null;
 					$filename_big_img=null;
-					$lenght=null;
-					$bitrate=null;
-					$file_path=null;
+					//$lenght=null;
+					//$bitrate=null;
+					//$file_path=null;
 					
 					if ($this->form_validation->run() == FALSE)
 					{			
@@ -291,9 +292,7 @@ class songs extends Zcontroller {
 								  rename($data["full_path"], $filename);
 						          //rename($data["full_path"], $filename);
 						          $filename_big_arr["image1"] = $data["raw_name"].$date.$data["file_ext"];
-					  			  $filename_big_img = $filename_big_arr["image1"];			    	  	  
-						          $file_path='song/'.htmlspecialchars($_POST["txtAlbum"]).'/';
-								  //echo $filename_big_arr["image".$i]."<br/>";		 
+					  			  $filename_big_img = $filename_big_arr["image1"];			    	  	    
  			  
 						        }else{
 						          							  
@@ -325,7 +324,9 @@ class songs extends Zcontroller {
 					    	 
 					    	 $filename_big_img = $filename_big_img!="" ? $filename_big_img : $_POST["txtAlbumpic"];
 					    	 $filename_big_file = $filename_big_file!="" ? $filename_big_file : $_POST["txtFile"];
-					    	 
+					    	 $file_path='song/'.htmlspecialchars($_POST["txtAlbum"]).'/';
+					    	 $lenght = $lenght!="" ? $lenght : $_POST['txtlength'];
+					    	 $bitrate = $bitrate!="" ? $bitrate : $_POST['txtbitrate'];
                					$song_id = $this->m_songs->update_songs($song_id,
                											 $_POST["txtTitle"],	
 													     $_POST["cboArtist"],													     

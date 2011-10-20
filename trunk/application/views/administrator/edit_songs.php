@@ -3,10 +3,11 @@
     <div id="wrap">
     
     <div id="tdd_selected">
-    	<div class="dd_selected">Edit songs</div>
+    	<div class="dd_selected"><a href="<?=site_url("misc/homepage");?>">Home</a> Edit songs</div>
         <div class="dd_view">
         <form action="<?=site_url("songs/editsongs/".$song_id["song_id"]);?>" method="post" enctype="multipart/form-data">
-		
+		<input name="txtlength" type="hidden" value="<?=(isset($_POST['txtlength']) ? set_value('txtlength') : $song_id["length"])?>" />
+        <input name="txtbitrate" type="hidden" value="<?=(isset($_POST['txtbitrate']) ? set_value('txtbitrate') : $song_id["bit_rate"])?>" />
         <?php if(isset($message_errors)){?><div class="error_message" style="color:#BD2031; font-size:11px; line-height:20px;"><?=$message_errors;?></div><? }?>
         <table width="60%" border="0" align="center" cellpadding="0" cellspacing="0" id="cpanel_Songs">
               <tr>
@@ -87,7 +88,7 @@
                 <td>&nbsp;</td>
                 <td>
                 <br>
-                <input type="button" name="btnback" value="Back" class="bottom" onclick="window.location='<?=site_url("misc/homepage");?>'" />
+                <input type="button" name="btnback" value="Back" class="bottom" onclick="window.location='<?=site_url("songs/all");?>'" />
            		<input type="submit" name="btnedit" value="Ready update song" class="bottom" id="btnedit" />
                 </td>
                 <td>&nbsp;</td>
