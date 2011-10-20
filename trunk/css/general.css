@@ -5,19 +5,18 @@
 html,body,form,div,h1,h2,h3,h4,h5,h6,li,ol,p,ul{margin:0;padding:0}
 body,input{font-size:100%}
 body,select{font-family:Segoe UI,Tahoma,sans-serif}
-html,body{height:100%;background-color:#fff}
+html,body{height:100%;background:url(../images/bg.png);}
 h1{font: normal 250%/125% "Segoe UI Light", "Segoe UI", Arial, Verdana, Tahoma, sans-serif;color: #4f4f4f;}
 h2{font: normal 166%/108% "Segoe UI Light", "Segoe UI", Arial, Verdana, Tahoma, sans-serif;color: #4f4f4f;}
-body {background:url(../images/bg.png);}
 
 .container {
 	min-height: 100%;
-	width: 980px;
+	width: 880px;
 	/*border: 0px;*/
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 0px;
+	padding: 0px 10px;
 	background: ;
 	font-family: Arial;
 	clear: both;
@@ -29,7 +28,6 @@ body {background:url(../images/bg.png);}
 	padding-bottom: 10px;
 	font-size: 13px;
 	color: #2453B2;
-	/*background: #FFFFFF;*/
 	position: relative;
 	clear: both;
 	
@@ -474,7 +472,7 @@ div#footer {
 }
 
 .music-player {
-	margin:20px;
+	margin:20px 0px 0 20px;
 }
 
 .music-player .album-cover, .music-player .album-cover .img, .music-player .album-cover .highlight {
@@ -503,6 +501,27 @@ div#footer {
 	opacity: 1;
 }
 
+.music-player ul {
+	width:280px;
+	margin-top:10px; 
+	float:left;
+	list-style:none;
+}
+
+.music-player ul li{
+	border-bottom:#555 1px dotted;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.music-player ul li:hover a:hover{
+	color:#FFF9B3;
+}
+.music-player ul li a {
+	text-decoration:none;
+	color:#ccc;
+}
+
 .right_content {
 	background:#E7E7E7;
 }
@@ -516,5 +535,41 @@ div#footer {
 	color:#20C1F2;
 	text-decoration:none;
 }
+
+
+
+#playlist {
+	padding-top:10px;
+	padding-left:6px;
+	width:99%;
+	height:480px;
+	overflow:auto;
+	-webkit-overflow-scrolling:touch;
+	font-family: 'Hanuman', 'Khmer OS System', 'Khmer OS', 'Tahoma', 'sans-serif';
+}
+
+#playlist ul{
+}
+
+#playlist ul li{
+	border-bottom:1px #999 dotted;
+	list-style:none;
+	cursor:pointer;
+	padding-top:5px;
+	padding-bottom:5px;
+	color:#333;
+	height:21px;
+}
+
+#playlist ul li:hover{
+	color:#20C1F2;
+	border-bottom:1px #20C1F2 dotted;
+}
+
+.current {
+	color:#20C1F2;
+	border-bottom:1px #20C1F2 dotted;
+}
+
 
 
