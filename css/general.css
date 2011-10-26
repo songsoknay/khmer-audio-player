@@ -1,11 +1,11 @@
 @CHARSET "ISO-8859-1"; 
-
+@import url("fonts.css");
  @charset "utf-8";
 /* CSS Document */
 html,body,form,div,h1,h2,h3,h4,h5,h6,li,ol,p,ul{margin:0;padding:0}
 body,input{font-size:100%}
 body,select{font-family:Segoe UI,Tahoma,sans-serif}
-html,body{height:100%;background:url(../images/bg.png);}
+html,body{height:100%;background:url(../images/bg.png) repeat-y;}
 h1{font: normal 250%/125% "Segoe UI Light", "Segoe UI", Arial, Verdana, Tahoma, sans-serif;color: #4f4f4f;}
 h2{font: normal 166%/108% "Segoe UI Light", "Segoe UI", Arial, Verdana, Tahoma, sans-serif;color: #4f4f4f;}
 
@@ -379,7 +379,7 @@ div#footer {
 	height:31px;
 	list-style:none;
 	margin:0 auto;
-	padding:0;
+	padding:3px 0 0 0;
 	}
 	.menu li{
 		float:left;
@@ -503,7 +503,8 @@ div#footer {
 
 .music-player ul {
 	width:280px;
-	margin-top:10px; 
+	margin:10px 0 0 0;
+	padding:0; 
 	float:left;
 	list-style:none;
 	font-family: 'Hanuman', 'Khmer OS System', 'Khmer OS', 'Tahoma', 'sans-serif';
@@ -525,6 +526,11 @@ div#footer {
 .music-player ul li a {
 	text-decoration:none;
 	color:#ccc;
+}
+
+.music-player .album_title {
+	font-size:12px; padding-left:18px; text-align:left; float:left; width:135px;
+	font-family: 'Hanuman', 'Khmer OS System', 'Khmer OS', 'Tahoma', 'sans-serif';
 }
 
 .right_content {
@@ -550,11 +556,14 @@ div#footer {
 	width:99%;
 	height:460px;
 	overflow:auto;
-	-webkit-overflow-scrolling:touch;
+	/*-webkit-overflow-scrolling:touch;*/
 	font-family: 'Hanuman', 'Khmer OS System', 'Khmer OS', 'Tahoma', 'sans-serif';
 }
 
 #playlist ul{
+	width:530px;
+	padding:0;
+	margin:0;
 }
 
 #playlist ul li{
@@ -577,5 +586,12 @@ div#footer {
 	border-bottom:1px #20C1F2 dotted;
 }
 
+.play {
+	background:url(../images/play.png) no-repeat; width:26px; height:26px
+}
+
+.pause {
+	background:url(../images/pause.png) no-repeat; width:26px; height:26px
+}
 
 
