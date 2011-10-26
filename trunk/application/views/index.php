@@ -36,7 +36,7 @@
             <?php foreach($song_cat->result_array() as $rowCat){?>
             <li><a href="<?=site_url("#")?>"><?=$rowCat["song_cat_name"];?></a></li>
             <?php }?>
-            </ul>
+          </ul>
        </div>
       </td>
       
@@ -44,17 +44,11 @@
           <div id="player">
             <?php
 			//setting the variables
-			$ipod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
-			$iphone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
-			$ipad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
 			$safari = stripos($_SERVER['HTTP_USER_AGENT'],"Safari");
 			$chrome = stripos($_SERVER['HTTP_USER_AGENT'],"chrome");
 			
 			//detecting device
-			if ($ipod == true || $iphone == true || $ipad == true){?>
-             	<style type="text/css">audio {width:350px;}</style>
-          		<div onclick="nextSong()" style="height:30px; width:35px; float:right; cursor:pointer;"><img src="<?=base_url();?>images/next.png" height="28" /></div>
-			<? }else if($chrome==true) {?>
+			if($chrome==true) {?>
             	<style type="text/css">audio {width:518px;}</style>
 				<div onclick="nextSong()" style="height:30px; width:35px; float:right; cursor:pointer;"><img src="<?=base_url();?>images/next.png" width="35" height="32" /></div>
 			<? }else {?> 
@@ -62,8 +56,8 @@
             	<div onclick="nextSong()" style="height:30px; width:35px; float:right; cursor:pointer;"><img src="<?=base_url();?>images/next.png" height="25" /></div>
             <? }?>	
           </div>
-		  
-
+		  <div id="playpause" onclick="playPause()">&nbsp;</div>
+		  <div id="mute" onclick="mute()">&nbsp;mute</div>
           <div id="playlist">
 
               <script type="text/javascript">
@@ -86,4 +80,4 @@
       </td>
     </tr>
   </table>
-<style type="text/css">@font-face{font-family:"Hanuman";font-style:normal;font-weight:bold;src:url("http://themes.googleusercontent.com/font?kit=Ew45bUiEOJLRErShx3hFGA") format("truetype"), url('http://themes.googleusercontent.com/font?kit=aHXJoDrzg2IPQxS0h3D3gA') format('woff');}@font-face{font-family:"Hanuman";font-style:normal;font-weight:normal;src:url("http://themes.googleusercontent.com/font?kit=Ew45bUiEOJLRErShx3hFGA") format("truetype"), url('http://themes.googleusercontent.com/font?kit=aHXJoDrzg2IPQxS0h3D3gA') format('woff');}</style>
+<style type="text/css"></style>
