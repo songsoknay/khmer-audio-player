@@ -1,0 +1,1 @@
+Play on windows, linux, mac, ios, Android
